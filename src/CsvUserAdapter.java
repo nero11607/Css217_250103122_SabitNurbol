@@ -1,0 +1,26 @@
+public class CsvUserAdapter implements IUserSource {
+    private final LegacyCsvUserStore csvStore;
+
+    public CsvUserAdapter(LegacyCsvUserStore csvStore) {
+        this.csvStore = csvStore;
+    }
+
+    @Override
+    public UserProfile getNextUser() {
+        String row = csvStore.fetchNextRow();
+        if (row == null || row.trim().isEmpty()) {
+            throw new IllegalStateException();
+        }
+        
+        String[] tokens = row.split(",");
+        if (tokens.length < 3) {
+            throw new IllegalStateException();
+        }
+        
+        int id = Integer.parseInt(tokens[0].trim());
+        String name = tokens[1].trim();
+        String role = tokens[2].trim();
+        
+        return new UserProfile(id, name, role);
+    }
+}
