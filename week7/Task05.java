@@ -46,9 +46,3 @@ class BracketDecorator implements TextComponent {
     }
 }
 
-public class Task05 {
-    public static void main(String[] args) {
-        TextComponent formatter = new BracketDecorator(new UpperCaseDecorator(new TrimDecorator(new PlainText())));
-        System.out.println(formatter.format("   hello world   "));
-    }
-}

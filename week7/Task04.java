@@ -67,13 +67,3 @@ class DataProcessor {
     }
 }
 
-public class Task04 {
-    public static void main(String[] args) {
-        DataProcessor processor = new DataProcessor(new BubbleSortStrategy());
-        processor.process(new int[]{5, 2, 9, 1});
-        processor.setStrategy(new SelectionSortStrategy());
-        processor.process(new int[]{8, 3, 7, 4});
-        processor.setStrategy(new InsertionSortStrategy());
-        processor.process(new int[]{6, 1, 5, 2});
-    }
-}
